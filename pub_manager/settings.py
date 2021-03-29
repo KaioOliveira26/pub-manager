@@ -1,7 +1,6 @@
 from pathlib import Path
 from dotenv import load_dotenv
 import os
-import django_heroku
 
 load_dotenv()
 
@@ -9,10 +8,10 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = 'e+oa=)w*eb@i2gho_$m0op6pg3!d=e^lyokc%3chd%ga9zh!_q'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
-DEBUG = False
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -111,7 +110,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-DISABLE_COLLECTSTATIC=1
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
@@ -121,4 +122,3 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR.anchor, 'static'),
 )
-django_heroku.settings(locals())

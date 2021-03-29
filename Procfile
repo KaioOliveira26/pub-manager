@@ -1,1 +1,0 @@
-web: gunicorn pub_manager.wsgi
