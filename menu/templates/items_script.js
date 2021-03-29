@@ -12,18 +12,19 @@ items.forEach((item) => {
 
   const card = document.createElement("div");
   card.className = "card";
-  card.style = "width: 16rem; margin-top:10px;";
+  card.style = "width: 16rem;margin:auto; margin-top:10px;";
 
   const image = document.createElement("img");
   image.alt = `${item.id} ${item.name}`;
   image.className = "card-img-top";
+  image.style = "height:50vh";
   image.src = item.photo;
 
   const cardContent = document.createElement("div");
   cardContent.className = "card-body";
 
-  const name = document.createElement("h2");
-  name.append(item.name);
+  const name = document.createElement("h4");
+  name.append(item.name.split(' ').splice(0,2).join(' '));
   name.id = "name";
   name.tagName = "name";
   name.className = "card-title";

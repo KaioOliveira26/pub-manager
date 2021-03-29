@@ -14,10 +14,11 @@ from .models import Item
 from .serializers import ItemSerializer
 from .forms import ItemForm
 
+
 class MenuView(APIView):
     def get(self, request):
-        items = json.dumps(ItemSerializer(Item.objects.all(),many=True).data)
-        return TemplateResponse(request, 'menu.html', {'items':items})
+        items = json.dumps(ItemSerializer(Item.objects.all(), many=True).data)
+        return TemplateResponse(request, 'menu.html', {'items': items})
 
     def post(self, request):
         return Response(request.data)
@@ -29,7 +30,6 @@ class InsertItem(APIView):
 
     def post(self, request):
         item = Item.objects.create(
-        **{key: request.data[key] for key in request.data if key !='csrfmiddlewaretoken'})
+            **{key: request.data[key] for key in request.data if key != 'csrfmiddlewaretoken'})
         new_item = ItemSerializer(item).data
         return redirect('../menu/')
-    

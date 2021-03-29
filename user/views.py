@@ -83,3 +83,13 @@ class RedirectView(APIView):
 class LoginPage(APIView):
     def get(self, request):
         return render(request, 'login.html')
+
+class UserCategoryView(APIView):
+    def post(self,request):
+        token = dict(request.data)['token'][0]
+        try:
+            user = UserSerializer(Token.objects.get(key=token).user).data
+            if user['is_superuser'] == True:
+                return Response('super_user')
+        except:
+            return Response('')

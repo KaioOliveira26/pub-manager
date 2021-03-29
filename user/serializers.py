@@ -6,4 +6,4 @@ class UserSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
     is_staff = serializers.BooleanField()
-    is_superuser = serializers.BooleanField(write_only=True)
+    is_superuser = serializers.BooleanField()

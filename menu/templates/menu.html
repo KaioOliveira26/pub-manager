@@ -13,7 +13,6 @@
 {% endblock jquery %} 
 
 {% block content %}
-<div class='container' id='menu'>
     <div class="d-flex justify-content-center">
         <button style='margin-right:10px;' type="button" class="btn btn-primary" id='btnToggleSaleModal' data-toggle="modal" data-target="#saleModal">
             Fechar Mesa
@@ -23,6 +22,7 @@
         </button>
     </div>
     {% include 'modal.html' %}
+<div id='menu' class='d-flex align-items-stretch flex-wrap'>
 </div>
 {% endblock content %}
 

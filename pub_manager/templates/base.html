@@ -27,16 +27,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="../dashboard/">Relatorios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="../item/">Novo Produto</a>
+              <a class="nav-link active" href="../" id="btnLogOff">Sair</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="../menu/">Menu</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="../" id='btnLogOff'>sair</a>
+              <a class="nav-link active invisible" href="../dashboard/"
+                >Relatorios</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active invisible" href="../item/"
+                >Novo Produto</a
+              >
             </li>
           </ul>
         </div>
@@ -45,6 +49,49 @@
     <div class="container">{% block content %} {% endblock content %}</div>
 
     {% include 'base/js.html' %} {% block jquery %} {% endblock %}
-    <script>$('#btnLogOff').click(()=>localStorage.clear())</script>
+    <script>
+      $("#btnLogOff").click(() => localStorage.clear());
+
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(
+                cookie.substring(name.length + 1)
+              );
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      const csrftoken = getCookie("csrftoken");
+
+      let user = "";
+
+      $.ajax({
+        method: "POST",
+        data: { token: localStorage.getItem("token") },
+        url: "/get-user-category/",
+        headers: { "X-CSRFToken": csrftoken },
+        success: function (response) {
+          user = response;
+          if (user === "super_user") {
+            nav_items = document.getElementsByClassName("active");
+            for (var i = 0; i < nav_items.length; i++) {
+              nav_items[i].className = "nav-link active visible";
+            }
+          }
+        },
+
+        error: function (error_data) {
+          console.log("error");
+          console.log(error_data);
+        },
+      });
+    </script>
   </body>
 </html>
