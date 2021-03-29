@@ -6,6 +6,6 @@ from customer.models import Customer
 class Sale(models.Model):
     table = models.ForeignKey(Table, on_delete=models.DO_NOTHING)
     employee = models.ForeignKey(User,on_delete=models.DO_NOTHING)
-    # customer = models.ForeignKey(Customer,on_delete=models.DO_NOTHING)
+    customer = models.ForeignKey(Customer,on_delete=models.DO_NOTHING)
     total_price = models.DecimalField(max_digits=12, decimal_places=2)
     date = models.DateTimeField(auto_now_add=True)

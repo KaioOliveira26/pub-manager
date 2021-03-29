@@ -13,6 +13,7 @@ import json
 from .models import Sale
 from menu.models import ItemSale,Item
 from table.models import Table
+from customer.models import Customer
 
 from .serializers import SaleSerializer
 from user.serializers import UserSerializer
@@ -23,9 +24,10 @@ class SaleView(APIView):
         sale = json.loads(dict(request.data)['data'][0])
         employee = getattr(Token.objects.get(key=sale['user_token']), 'user')
         table = Table.objects.get(id=sale['table_id'])
-
+        customer = Customer.objects.get(id=sale['customer'])
+        
         saleObject = Sale.objects.create(
-            **{"table": table, "total_price": sale['total_price'],'employee':employee})
+            **{"table": table, "total_price": sale['total_price'],'customer':customer,'employee':employee})
         
         SaleItems = [ItemSale.objects.create(
             **{

@@ -18,10 +18,13 @@ $("#btnToggleSaleModal").click(() => {
         <label for="inputTableNumber">Numero da mesa</label>
         <input type='number' id="inputTableNumber" name="inputTableNumber" value=1 min=1 class="form-control form-control-sm"/>
     <div>
-    `.replace(",", "")
+    <div>
+        <label for="inputCustomerNumber">Numero do Cliente</label>
+        <input type='number' id="inputCustomerNumber" name="inputCustomerNumber" value=1 min=1 class="form-control form-control-sm"/>
+    <div>
+    `.replace("/,/", "")
   );
 });
-$('#btnClientSelect').click()
 
 $("#btnFinishSale").click(() => {
   const saleItems = JSON.parse(localStorage.getItem("sale")).items;
@@ -30,7 +33,7 @@ $("#btnFinishSale").click(() => {
     0
   );
   table_id = $("#inputTableNumber").val();
-  
+  customer = $("#inputCustomerNumber").val()
   // csrftoken is necessary for ajax post method
   function getCookie(name) {
     let cookieValue = null;
@@ -52,6 +55,7 @@ $("#btnFinishSale").click(() => {
     method: "POST",
     data: {
       data: JSON.stringify({
+        customer:customer,
         user_token: localStorage.getItem("token"),
         table_id: table_id,
         total_price: total_price,
@@ -79,3 +83,4 @@ $("#btnFinishSale").click(() => {
   $("#saleModal").modal("toggle");
 });
 $("#btnCloseSaleModal").click(() => $("#saleModal").modal("toggle"));
+$('#btnNewClient').click(()=>$('#clientModal').modal('toggle'))

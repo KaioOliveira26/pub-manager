@@ -1,0 +1,1 @@
+$('#btnCloseUserModal').click(()=>$('#clientModal').modal('togle'))
