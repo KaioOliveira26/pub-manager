@@ -12,7 +12,7 @@ import json
 
 from .models import Item
 from .serializers import ItemSerializer
-
+from .forms import ItemForm
 
 class MenuView(APIView):
     def get(self, request):
@@ -29,6 +29,7 @@ class InsertItem(APIView):
 
     def post(self, request):
         item = Item.objects.create(
-            **{key: request.data[key] for key in request.data if key !='csrfmiddlewaretoken'})
+        **{key: request.data[key] for key in request.data if key !='csrfmiddlewaretoken'})
         new_item = ItemSerializer(item).data
         return redirect('../menu/')
+    
