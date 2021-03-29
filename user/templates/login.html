@@ -1,0 +1,82 @@
+{% extends 'base.html' %} ]
+{% block jquery %}
+<script>
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+      const cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === name + "=") {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+  const csrftoken = getCookie("csrftoken");
+
+  $("#btnLoginSubmit").on("click", () => {
+    username = $("#inputUser").val();
+    password = $("#inputPassword").val();
+    $.ajax({
+      method: "POST",
+      data: { username: username, password: password },
+      url: "/login/",
+      headers: { "X-CSRFToken": csrftoken },
+      success: function (response) {
+        localStorage.setItem('token',response.token);
+        window.location.pathname = '/menu/'
+      },
+      error: function (error_data) {
+        console.log("error");
+        console.log(error_data);
+      },
+    });
+  });
+</script>
+
+{% endblock jquery %} 
+{% block content %}
+<div class="row">
+  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+    <div class="card card-signin my-5">
+      <div class="card-body">
+        <h5 class="card-title text-center">Sign In</h5>
+        <div class="form-label-group">
+          <label for="inputUser">User</label>
+          <input
+            type="text"
+            id="inputUser"
+            class="form-control"
+            placeholder="user"
+            required
+            autofocus
+          />
+        </div>
+
+        <div class="form-label-group">
+          <label for="inputPassword">Password</label>
+          <input
+            type="password"
+            id="inputPassword"
+            class="form-control"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <div class="text-center" style="margin-top: 10px">
+          <button
+            class="btn btn-lg btn-primary btn-block text-uppercase"
+            id="btnLoginSubmit"
+            type="submit"
+          >
+            Sign in
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

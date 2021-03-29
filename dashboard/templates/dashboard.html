@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block jquery %}
+
+<script>
+  {% include "chart.js" %}
+
+  createChart('/best-sellers-data/','chart-best-sellers','chartBestSellers')
+  createChart('/less-sold-data/','chart-less-sold','chartLessSold')
+  createChart('/sales/','quantity-total','chartSales')
+</script>
+
+{% endblock jquery %} {% block content %}
+
+<div class="row">
+  <div class="col-sm">
+    <div class="card flex-fill">
+      <div class="card-body py-4">
+        <div class="media">
+          <div class="media-body">
+            <h1>Media de consumo</h1>
+            <div id="blockAverageSales"></div>
+            <div class="mb-0"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg">
+    <div class="card flex-fill">
+      <div class="card-body py-4">
+        <div class="media">
+          <div class="media-body">
+            <h1>Saida</h1>
+            <div id="quantity-total"></div>
+            <div class="mb-0"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" style='marginTop=10px'>
+<div class="col-lg">
+    <div class="card flex-fill">
+      <div id="chart-best-sellers" class=""></div>
+    </div>
+  </div>
+  <div class="col-lg">
+    <div class="card flex-fill col-lg">
+      <div id="chart-less-sold" class=""></div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

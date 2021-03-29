@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+{% block jquery %} 
+    <script>
+        const items = {{items|safe}};
+        {% include 'items_script.js' %} 
+        {% include 'modal_script.js' %} 
+    </script>
+    <script> 
+      if(!localStorage.getItem('token')){
+        window.location.pathname = ''
+      }
+    </script>
+{% endblock jquery %} 
+
+{% block content %}
+<div class='container' id='menu'>
+    <div class="d-flex justify-content-center">
+        <button style='margin-right:10px;' type="button" class="btn btn-primary" id='btnToggleSaleModal' data-toggle="modal" data-target="#saleModal">
+            Fechar Mesa
+        </button>
+        <button type="button" class="btn btn-secondary" id='cleanCart' data-toggle="modal" data-target="#saleModal">
+            limpar
+        </button>
+    </div>
+    {% include 'modal.html' %}
+</div>
+{% endblock content %}
+
