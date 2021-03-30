@@ -14,8 +14,25 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['https://challenge-pub-manager.herokuapp.com/','https://pub-mannager.herokuapp.com/','0.0.0.0']
 
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
-# Application definition
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': 5432
+    }
+}
+
+if DATABASE_URL:
+    db_from_env = dj_database_url.config(
+        default=DATABASE_URL, conn_max_age=500, ssl_require=True)
+    DATABASES['default'].update(db_from_env)
+    
+    DEBUG = False
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -66,19 +83,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pub_manager.wsgi.application'
 
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': 'db',
-        'PORT': 5432
-    }
-}
-
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -106,15 +110,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
-
-if DATABASE_URL:
-    db_from_env = dj_database_url.config(
-        default=DATABASE_URL, conn_max_age=500, ssl_require=True)
-    DATABASES['default'].update(db_from_env)
-
-
-
 STATIC_URL = '/static/'
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
@@ -123,12 +118,3 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR.anchor, 'static'),
 )
-
-DATABASE_URL = os.environ.get('DATABASE_URL')
-
-if DATABASE_URL:
-    db_from_env = dj_database_url.config(
-        default=DATABASE_URL, conn_max_age=500, ssl_require=True)
-    DATABASES['default'].update(db_from_env)
-    
-    DEBUG = False
