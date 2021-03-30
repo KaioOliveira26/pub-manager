@@ -8,13 +8,14 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+print(os.getenv('SECRET_KEY'))
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['https://challenge-pub-manager.herokuapp.com/']
+ALLOWED_HOSTS = ['https://challenge-pub-manager.herokuapp.com/','0.0.0.0']
 
 
 # Application definition
@@ -97,8 +98,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -110,9 +109,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
+if DATABASE_URL:
+    db_from_env = dj_database_url.config(
+        default=DATABASE_URL, conn_max_age=500, ssl_require=True)
+    DATABASES['default'].update(db_from_env)
+
+
 
 STATIC_URL = '/static/'
 

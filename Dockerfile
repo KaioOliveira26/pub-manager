@@ -9,7 +9,6 @@ RUN pip install -r requirements.txt
 WORKDIR /code
 COPY . /code/
 
-RUN apt update \\
-  && apt install -y libpq-dev gcc
+RUN pip install psycopg2-binary
 
 RUN pip install psycopg2
