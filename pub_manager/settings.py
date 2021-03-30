@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['https://challenge-pub-manager.herokuapp.com/','0.0.0.0']
+ALLOWED_HOSTS = ['https://challenge-pub-manager.herokuapp.com/','https://pub-mannager.herokuapp.com/','0.0.0.0']
 
 
 # Application definition
