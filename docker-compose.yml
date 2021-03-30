@@ -7,7 +7,16 @@ services:
             - 5432:5432
         volumes:
            - pgdata:/var/lib/postgresql/data  
-    migration:
+    migration1:
+        build: .
+        env_file: envs/dev.env
+        command: 
+            bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py makemigrations'
+        volumes:
+            - .:/code
+        depends_on:
+            - db
+    migration2:
         build: .
         env_file: envs/dev.env
         command: 
@@ -16,6 +25,7 @@ services:
             - .:/code
         depends_on:
             - db
+            - migration1
     web:
         build: .
         env_file: envs/dev.env
@@ -30,7 +40,8 @@ services:
 
         depends_on: 
             - db
-            - migration
+            - migration1
+            - migration2
 
 volumes: 
     pgdata:
