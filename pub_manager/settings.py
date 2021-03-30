@@ -35,6 +35,7 @@ if DATABASE_URL:
     DEBUG = False
 
 INSTALLED_APPS = [
+    'django.contrib',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
