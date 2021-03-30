@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect
 from django.template.response import TemplateResponse
-from django.contrib.auth import authenticate
 from django.contrib.contenttypes.models import ContentType
 
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
 
 from datetime import datetime
 
