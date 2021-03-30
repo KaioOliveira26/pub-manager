@@ -1,6 +1,5 @@
 {% extends 'base.html' %} ] {% block jquery %}
 <script>
-
   $("#btnLoginSubmit").on("click", () => {
     username = $("#inputUser").val();
     password = $("#inputPassword").val();
@@ -26,26 +25,26 @@
   <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
     <div class="card card-signin my-5">
       <div class="card-body">
-        <h5 class="card-title text-center">Sign In</h5>
+        <h5 class="card-title text-center">Entrar</h5>
         <div class="form-label-group">
-          <label for="inputUser">User</label>
+          <label for="inputUser">Usuário</label>
           <input
             type="text"
             id="inputUser"
             class="form-control"
-            placeholder="user"
+            placeholder="usuario"
             required
             autofocus
           />
         </div>
 
         <div class="form-label-group">
-          <label for="inputPassword">Password</label>
+          <label for="inputPassword">Senha</label>
           <input
             type="password"
             id="inputPassword"
             class="form-control"
-            placeholder="Password"
+            placeholder="Senha"
             required
           />
         </div>
@@ -55,7 +54,7 @@
             id="btnLoginSubmit"
             type="submit"
           >
-            Sign in
+            entrar
           </button>
         </div>
       </div>

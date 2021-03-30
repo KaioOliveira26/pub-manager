@@ -16,6 +16,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
 
+if not User.objects.filter(username='gerente').exists():
+    User.objects.create_superuser('gerente', '', '1234')
+
 def groups_creation():
     employee, exists = Group.objects.get_or_create(name='employee')
 
