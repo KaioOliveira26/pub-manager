@@ -4,4 +4,4 @@ class CustomerSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     name = serializers.CharField()
     cpf = serializers.CharField()
-    telefone = serializers.CharField()
+    phone = serializers.CharField()

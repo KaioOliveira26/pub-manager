@@ -1,3 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.template.response import TemplateResponse
+from django.contrib.auth import authenticate
+from django.contrib.contenttypes.models import ContentType
 
-# Create your views here.
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
+
+from .models import Customer
+
+from .serializers import CustomerSerializer
+
+class CustomerView(APIView):
+    def post(self,request):
+        customer = dict(request.data)
+        customer = CustomerSerializer(Customer.objects.create(**customer)).data
+        return Response(customer)
