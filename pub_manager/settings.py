@@ -9,10 +9,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'e+oa=)w*eb@i2gho_$m0op6pg3!d=e^lyokc%3chd%ga9zh!_q'
 
+DEBUG = False
 
-DEBUG = True
-
-ALLOWED_HOSTS = ['https://challenge-pub-manager.herokuapp.com/','https://pub-mannager.herokuapp.com/','pub-mannager.herokuapp.com/','0.0.0.0']
+ALLOWED_HOSTS = ['https://challenge-pub-manager.herokuapp.com/','https://pub-mannager.herokuapp.com/','https:/0/pub-mannager.herokuapp.com/','0.0.0.0']
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
