@@ -6,7 +6,16 @@ services:
         ports:
             - 5432:5432
         volumes:
-           - pgdata:/var/lib/postgresql/data  
+           - pgdata:/var/lib/postgresql/data 
+    migration_auth:
+        build: .
+        env_file: envs/dev.env
+        command: 
+            bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py mgrate auth && python3 manage.py migrate auth'
+        volumes:
+            - .:/code
+        depends_on:
+            - db
     migration:
         build: .
         env_file: envs/dev.env
@@ -16,6 +25,7 @@ services:
             - .:/code
         depends_on:
             - db
+            - migration_auth
     web:
         build: .
         env_file: envs/dev.env
@@ -30,6 +40,7 @@ services:
 
         depends_on: 
             - db
+            - migration_auth
             - migration
 
 volumes: 
