@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.models import User, Group, Permission
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.contenttypes.models import ContentType
 
@@ -18,8 +18,6 @@ from django.utils.decorators import method_decorator
 
 if not User.objects.filter(username='gerente').exists():
     User.objects.create_superuser('gerente', '', '1234')
-
-
 
 class LoginView(APIView):
     def post(self, request):
