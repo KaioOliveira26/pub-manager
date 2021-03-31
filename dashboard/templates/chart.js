@@ -1,7 +1,7 @@
 $.ajax({
   method: "GET",
   url: "/average-sales/",
-
+  headers: { "X-CSRFToken": csrftoken },
   success: function (response) {
     const averageSales = response.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     $("#blockAverageSales").html(`<h2 style='color:green;'>${averageSales}</h2>`);
