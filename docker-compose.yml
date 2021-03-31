@@ -11,7 +11,7 @@ services:
         build: .
         env_file: envs/dev.env
         command: 
-            bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py mgrate auth && python3 manage.py migrate auth'
+            bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py makemigrations'
         volumes:
             - .:/code
         depends_on:
