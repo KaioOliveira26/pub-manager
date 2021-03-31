@@ -3,7 +3,7 @@ import os
 import dj_database_url
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'e+oa=)w*eb@i2gho_$m0op6pg3!d=e^lyokc%3chd%ga9zh!_q'
 
@@ -125,8 +125,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-STATIC_ROOT =  os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
