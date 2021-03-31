@@ -6,11 +6,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('menu.urls')),
-    path('', include('dashboard.urls')),
-    path('', include('sales.urls')),
-    path('', include('user.urls')),
-    path('', include('customer.urls')),
+    # path('', include('menu.urls')),
+    # path('', include('dashboard.urls')),
+    # path('', include('sales.urls')),
+    # path('', include('user.urls')),
+    # path('', include('customer.urls')),
 ]
 
 if settings.DEBUG:
