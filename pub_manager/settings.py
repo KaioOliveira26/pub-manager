@@ -9,7 +9,7 @@ SECRET_KEY = 'e+oa=)w*eb@i2gho_$m0op6pg3!d=e^lyokc%3chd%ga9zh!_q'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['pub-mannager.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
