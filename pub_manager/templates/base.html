@@ -52,8 +52,6 @@
       </div>
     </nav>
     <div class="container">{% block content %} {% endblock content %}</div>
-
-    {% include 'base/js.html' %} {% block jquery %} {% endblock %}
     <script>
       $("#btnLogOff").click(() => localStorage.clear());
 
@@ -98,5 +96,7 @@
         },
       });
     </script>
+
+    {% include 'base/js.html' %} {% block jquery %} {% endblock %}
   </body>
 </html>
