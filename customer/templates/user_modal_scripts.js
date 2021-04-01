@@ -1,6 +1,9 @@
 $('#btnCloseUserModal').click(()=>$('#clientModal').modal('toggle'))
 $('#btnCloseUserInformationModal').click(()=>$('#clientInformationModal').modal('toggle'))
-
+$(document).ready(function(){
+  $('#textCustomerCPF').mask('000.000.000-00');
+  $('#textCustomerPhone').mask('(11) 00000-0000');
+});
 $('#btnSaveUser').click(()=>{
     const name = $('#inputCustomerName').val()
     const cpf = $('#inputCustomerCPF').val()
