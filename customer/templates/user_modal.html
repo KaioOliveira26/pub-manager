@@ -6,59 +6,57 @@
   aria-labelledby="clientModalTitle"
   aria-hidden="true"
 >
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="clientModalTitle">Usuário</h5>
-            </div>
-            
-            <div class="modal-body" id="modalSaleBody">
-                <div>
-                    <label for="inputCustomerName">Nome</label>
-                    <input
-                        type="text"
-                        id="inputCustomerName"
-                        name="inputCustomerName"
-                        class="form-control form-control-sm"
-                    />
-                </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="clientModalTitle">Usuário</h5>
+      </div>
 
-                <div>
-                    <label for="inputCustomerCPF">CPF do Cliente</label>
-                    <input
-                        type="text"
-                        id="inputCustomerCPF"
-                        name="inputCustomerCPF"
-                        class="form-control form-control-sm"
-                        onkeypress="$(this).mask('000.000.000-00');"
-                    />
-                </div>
-                <div>
-                    <label for="inputCustomerPhone">Telefone</label>
-                    <input
-                        type="text"
-                        id="inputCustomerPhone"
-                        name="inputCustomerPhone"
-                        class="form-control form-control-sm"
-                        onkeypress="$(this).mask('(00) 0000-00000')"
-                    />
-                </div>
-            </div>
-            
-            <div class="modal-footer">
-                <button type="button" id="btnSaveUser" class="btn btn-primary">
-                    Cadastrar Cliente
-                </button>
-                <button
-                    type="button"
-                    id="btnCloseUserModal"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                >
-                    Fechar
-                </button>
-            </div>
+      <div class="modal-body" id="modalSaleBody">
+        <div>
+          <label for="inputCustomerName">Nome</label>
+          <input
+            type="text"
+            id="inputCustomerName"
+            name="inputCustomerName"
+            class="form-control form-control-sm"
+          />
         </div>
+
+        <div>
+          <label for="inputCustomerCPF">CPF do Cliente</label>
+          <input
+            type="text"
+            id="inputCustomerCPF"
+            name="inputCustomerCPF"
+            class="form-control form-control-sm"
+          />
+        </div>
+        <div>
+          <label for="inputCustomerPhone">Telefone</label>
+          <input
+            type="text"
+            id="inputCustomerPhone"
+            name="inputCustomerPhone"
+            class="form-control form-control-sm"
+          />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="btnSaveUser" class="btn btn-primary">
+          Cadastrar Cliente
+        </button>
+        <button
+          type="button"
+          id="btnCloseUserModal"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          Fechar
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -70,39 +68,43 @@
   aria-labelledby="clientInformationModal"
   aria-hidden="true"
 >
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="clientInformationModalTitle">Usuário</h5>
-            </div>
-            
-            <div class="modal-body" id="modalSaleBody">
-                <div>
-                    <p id='textCustomerId'></p>
-                </div>
-                <div>
-                    <p id='textCustomerName'></p>
-                </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="clientInformationModalTitle">Usuário</h5>
+      </div>
 
-                <div>
-                    <p id='textCustomerCPF' onload="$(this).mask('000.000.000-00');"></p>
-                </div>
-
-                <div>
-                    <p id='textCustomerPhone' onload="$(this).mask('(00) 0000-00000')"></p>
-                </div>
-            </div>
-            
-            <div class="modal-footer">
-                <button
-                    type="button"
-                    id="btnCloseUserInformationModal"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                >
-                    Fechar
-                </button>
-            </div>
+      <div class="modal-body" id="modalSaleBody">
+        <div>
+          <p id="textCustomerId"></p>
         </div>
+        <div>
+          <p id="textCustomerName"></p>
+        </div>
+
+        <div>
+          <p
+            id="textCustomerCPF"
+          ></p>
+        </div>
+
+        <div>
+          <p
+            id="textCustomerPhone"
+          ></p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="btnCloseUserInformationModal"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          Fechar
+        </button>
+      </div>
+    </div>
   </div>
 </div>
