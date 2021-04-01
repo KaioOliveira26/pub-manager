@@ -30,6 +30,7 @@
                         id="inputCustomerCPF"
                         name="inputCustomerCPF"
                         class="form-control form-control-sm"
+                        onkeypress="$(this).mask('000.000.000-00');"
                     />
                 </div>
                 <div>
@@ -39,6 +40,7 @@
                         id="inputCustomerPhone"
                         name="inputCustomerPhone"
                         class="form-control form-control-sm"
+                        onkeypress="$(this).mask('(00) 0000-00009')"
                     />
                 </div>
             </div>
@@ -83,11 +85,11 @@
                 </div>
 
                 <div>
-                    <p id='textCustomerCPF'></p>
+                    <p id='textCustomerCPF' onload="$(this).mask('000.000.000-00');"></p>
                 </div>
 
                 <div>
-                    <p id='textCustomerPhone'></p>
+                    <p id='textCustomerPhone' onload="$(this).mask('(00) 0000-00000')"></p>
                 </div>
             </div>
             
